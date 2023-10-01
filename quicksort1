@@ -1,0 +1,38 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def quickSort(arr):
+    pivot = arr[0]  # The pivot is the first element in the array
+    left = []
+    equal = []
+    right = []
+
+    for num in arr:
+        if num < pivot:
+            left.append(num)
+        elif num == pivot:
+            equal.append(num)
+        else:
+            right.append(num)
+
+    result = left + equal + right
+    return result
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = quickSort(arr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
